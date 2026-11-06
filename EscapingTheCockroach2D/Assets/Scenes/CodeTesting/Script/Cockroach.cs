@@ -71,14 +71,13 @@ public class Cockroach : MonoBehaviour
         {
             Destroy(Player);
         }
-        Flip(player.position.x);
+        //Flip(player.position.x);
     }
-    void Flip(float targetX)
+   /** void Flip(float targetX)
     {
         float dir = targetX < transform.position.x ? -1f : 1f;
         transform.localScale = new Vector3(dir, 1f, 1f);
-
-    }
+   **/
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
