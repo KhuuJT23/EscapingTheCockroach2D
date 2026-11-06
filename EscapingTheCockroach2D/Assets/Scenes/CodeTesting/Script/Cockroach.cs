@@ -58,6 +58,7 @@ public class Cockroach : MonoBehaviour
         {
             current = (current + 1) % waypoints.Length;
         }
+        
     }
     void Chase()
     {

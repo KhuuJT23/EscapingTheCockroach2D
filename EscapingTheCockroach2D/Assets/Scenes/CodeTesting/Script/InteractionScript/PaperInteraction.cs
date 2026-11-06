@@ -32,6 +32,7 @@ public class PaperInteraction : MonoBehaviour
         else if (!playerInRange)
         {
             interactButton.SetActive(false);
+            paper.SetActive(false);
         }
         if (Input.GetKeyDown(KeyCode.E) && playerInRange)
         { 
