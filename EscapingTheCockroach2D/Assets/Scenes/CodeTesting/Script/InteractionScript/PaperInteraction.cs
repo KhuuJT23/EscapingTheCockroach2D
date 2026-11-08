@@ -13,6 +13,7 @@ public class PaperInteraction : MonoBehaviour
     public GameObject interactButton;
     public GameObject itemInteracted;
     public GameObject paper;
+    public GameObject playerHasKey;
     //public string[] invent;
     //private int index;
 
@@ -38,6 +39,8 @@ public class PaperInteraction : MonoBehaviour
         { 
             interactButton.SetActive(false);
             paper.SetActive(true);
+            playerHasKey.SetActive(true);
+
 
         }
 

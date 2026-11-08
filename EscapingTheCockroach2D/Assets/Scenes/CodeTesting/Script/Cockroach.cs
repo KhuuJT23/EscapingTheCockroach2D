@@ -13,8 +13,10 @@ public class Cockroach : MonoBehaviour
     int current = 0; //index for the waypoint
     public float stopDistance = 1f;
     public bool playerEaten;
+    public bool playerEatenHiding;
     public GameObject Player;
-    
+    public GameObject Hiding;
+    public GameObject Closet;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,7 +31,7 @@ public class Cockroach : MonoBehaviour
         {
             case State.Patrol:
                 Patrol();
-                if(PlayerInRange())
+                if(PlayerInRange() && !Hiding.activeInHierarchy)
                 {
                     state = State.Chase;
                     
@@ -71,6 +73,13 @@ public class Cockroach : MonoBehaviour
         if (playerEaten)
         {
             Destroy(Player);
+        }else if ((playerEatenHiding && Hiding.activeInHierarchy && (state == State.Chase)))
+        {
+            Hiding.SetActive(false);
+            Closet.SetActive(true);
+            Player.SetActive(true);
+
+            
         }
         //Flip(player.position.x);
     }
@@ -84,6 +93,10 @@ public class Cockroach : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             playerEaten = true;
+        }
+        if(collision.CompareTag("HidingPlayer"))
+        {
+            playerEatenHiding = true;
         }
         
     }
